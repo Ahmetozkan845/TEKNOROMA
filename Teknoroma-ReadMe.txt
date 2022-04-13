@@ -10,10 +10,10 @@
 
 TEKNOROMA GÖRÜNÜM
 
-=>https://imgyukle.com/i/RJ1rbv
-=>https://www.hizliresim.com/wrtigyx
-=>https://www.hizliresim.com/2iukm0t
-=>https://www.hizliresim.com/drdig1t
+=> https://imgyukle.com/i/RJ1rbv
+=> https://www.hizliresim.com/wrtigyx
+=> https://www.hizliresim.com/2iukm0t
+=> https://www.hizliresim.com/drdig1t
 
 
 =>TEKNOROMA Kullanıcı Bilgileri
