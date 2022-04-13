@@ -1,0 +1,98 @@
+﻿@model ProductVM
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x=>x.Product.ID)
+    <div class="row">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Ürün Güncelleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            İsim
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.ProductName, new { @class = "form-control " })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Ürün Fiyatı
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.UnitPrice, new { @class = "form-control " })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Ürün Stok
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.UnitsInStock, new { @class = "form-control " })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Kategori
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.Product.CategoryID, new SelectList(Model.Categories, "ID", "CategoryName"), "Lütfen kategori seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Tedarikçi
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.Product.SupplierID, new SelectList(Model.Suppliers, "ID", "CompanyName"), "Lütfen tedarikçi seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label">
+                                  Mevcut Resim
+                              </label>
+                              <div class="fileupload fileupload-new col-sm-10" data-provides="fileupload">
+                                  <div class="fileupload-new thumbnail" >
+                                      <img src="@Model.Product.ImagePath" style="width: 200px;"  alt="" />
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                      Resim Seçiniz
+                                  </label>
+                                  @*<span class="btn btn-white btn-file">
+                                  </span>*@
+                                  <div class="col-sm-10">
+                                      <input name="resim" type="file" class="form-control" />
+                                  </div>
+                              </div>
+                          </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-warning">Ürün Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

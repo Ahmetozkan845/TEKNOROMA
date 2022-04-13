@@ -1,0 +1,50 @@
+﻿@model OrderVM
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel-body">
+    <div class="adv-table">
+        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Kullanıcı</th>
+                    <th>Email</th>
+                    <th>Toplam Tutar</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Durumu</th>
+                    <th>Ülke</th>
+                    <th>Şehir</th>
+                    <th>Adres</th>
+                    <th class="hidden-phone">Durum</th>
+                    <th class="hidden-phone">Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Order item in Model.Orders)
+                {
+                    <tr class="gradeX">
+                        <td>@item.ID</td>
+                        <td>@item.AppUser.UserName</td>
+                        <td>@item.AppUser.Email</td>
+                        <td>@item.TotalPrice</td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.OrderStatus</td>
+                        <td>@item.ShipCountry</td>
+                        <td>@item.ShipCity</td>
+                        <td>@item.ShipAddress</td>
+                        <td class="center hidden-phone">@item.Status</td>
+                        <td class="center hidden-phone">@Html.ActionLink(" ", "UpdateOrder", new { id = item.ID }, new { @class = "btn text-warning fas fa-edit" })</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<script src="~/Areas/Administration/AdminContent/OrderDTJ.js"></script>

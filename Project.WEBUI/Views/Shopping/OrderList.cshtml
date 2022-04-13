@@ -1,0 +1,48 @@
+﻿@model AppUserVM
+@{
+    AppUser user = (AppUser)HttpContext.Current.Session["member"];
+}
+@{
+    ViewBag.Title = "Siparişleriniz";
+}
+
+<div class="order-list">
+    <div class="container">
+        <span class="spacer-64"></span>
+        <h1 class="form-title-text text-center my-2">Siparişleriniz</h1>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ülke</th>
+                    <th>Şehir</th>
+                    <th>Adres</th>
+                    <th>Toplam Tutar</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Durumu</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (user.Orders != null)
+                {
+                    foreach (Order item in user.Orders)
+                    {
+                        <tr>
+                            <td>@item.ShipCountry</td>
+                            <td>@item.ShipCity</td>
+                            <td>@item.ShipAddress</td>
+                            <td>$@item.TotalPrice</td>
+                            <td>@item.OrderDate.ToShortDateString()</td>
+                            <td>@item.OrderStatus</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <h1 class="form-title-text text-center">Siparişiniz bulunmamaktadır.</h1>
+                }
+            </tbody>
+        </table>
+        <span class="spacer-128"></span>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model TerritoryVM
+@{
+    ViewBag.Title = "UpdateTerritory";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.Territory.ID)
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Bölge Güncelleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Bölge İsmi
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Territory.TerritoryDescription, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-warning">Bölge Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

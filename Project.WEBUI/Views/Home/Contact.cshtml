@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "İletişim";
+}
+ 
+<section class="contact">
+    <div class="container">
+        <div class="contact-text">
+            <span class="spacer-64"></span>
+            <h1 class="text-center">Ekiplerimiz 7/24 Hizmetinizde</h1>
+            <h2 class="text-center">Sorun, Görüş ve Önerileriniz için İletişime Geçin.</h2>
+            <span class="spacer-64"></span>
+        </div>
+
+        <div class="contact-wrapper row">
+            <div class="col-lg-3">
+                <div class="contact-card card-container text-center">
+                    <div class="card-icon support">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Teknik</h4>
+                    <p>Desteğe ihtiyacınız olan her durumda ekiplerimiz hizmetinizde.</p>
+                    <a href="@Url.Action("AddTechnicalIssue","Contact")" class="btn card-btn support">
+                        <span class="arrow-icon">➝</span>
+                        <span class="text">Destek Al</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="contact-card card-container text-center">
+                    <div class="card-icon sales">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <h4>İletişim</h4>
+                    <p>Hakkımızda bilgi almak için bizimle iletişime geçin.</p>
+                    <a href="@Url.Action("AddMessage","Contact")" class="btn card-btn sales">
+                        <span class="arrow-icon">➝</span>
+                        <span class="text">İletişime Geç</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="contact-card card-container text-center">
+                    <div class="card-icon partner">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Satıcı Ol</h4>
+                    <p>Sıra sizde! Diğer tüm ortaklarımız gibi sizde aramıza katılın.</p>
+                    <a href="@Url.Action("AddMessage","Contact")" class="btn card-btn partner">
+                        <span class="arrow-icon">➝</span>
+                        <span class="text">Bizimle Çalış</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="contact-card card-container text-center">
+                    <div class="card-icon advice">
+                        <i class="fas fa-comment-medical"></i>
+                    </div>
+                    <h4>Görüş Bildir</h4>
+                    <p>Fikir ve görüşlerinizi size daha iyi hizmet verebilmek için önemsiyoruz. </p>
+                    <a href="@Url.Action("AddMessage","Contact")" class="btn card-btn advice">
+                        <span class="arrow-icon">➝</span>
+                        <span class="text">Görüş Bildir</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

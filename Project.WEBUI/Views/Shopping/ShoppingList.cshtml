@@ -1,0 +1,94 @@
+﻿@model PaginationVM
+@{
+    ViewBag.Title = "Alışveriş Sayfası";
+}
+
+
+<div class="container">
+    <h3 class="text-danger">@TempData["connectionDeny"]</h3>
+    <h3 class="text-danger">@TempData["cartEmpty"]</h3>
+    <h3 class="text-danger">@TempData["payment"]</h3>
+    <h3 class="text-danger">@TempData["paymentIssue"]</h3>
+
+    <div class="row">
+        <div class="col-md-2" style="border-right: 1px solid #eaeaea">
+
+            <section class="panel">
+                <div class="panel-body">
+                    <h1 class="form-title-text" style="font-size:18px">Kategoriler</h1>
+                    <ul>
+                        @foreach (Category item in Model.Categories)
+                        {
+                            <li class="my-1">@Html.ActionLink(item.CategoryName, "ShoppingList", new { categoryID = item.ID }, new { @class = "text-danger" })</li>
+                        }
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-md-10">
+
+            <div class="row product-list">
+
+                @foreach (Product item in Model.PagedProducts)
+                {
+                    <div class="col-md-4 my-2">
+                        <section class="panel">
+                            <div class="pro-img-box">
+                                @if (item.ImagePath == null)
+                                {
+                                    <img src="~/OuterTools/img/no-image.png" alt="Resim yok" width="100" height="300" title="@item.ProductName" />
+                                }
+                                else
+                                {
+                                    <img src="@item.ImagePath" width="100" height="300" title="@item.ProductName" />
+                                }
+
+                            </div>
+
+                            <div class="panel-body text-center">
+                                <h4>
+                                    <a href="#" class="pro-title">
+                                        @item.ProductName
+                                    </a>
+                                </h4>
+                                <p class="price">$@item.UnitPrice</p>
+
+
+                                
+
+
+                                <a href="@Url.Action("AddToCart", new {id=item.ID })" class="bt-md bt-addtocart"> <i class="fas fa-shopping-basket"></i> Sepete Ekle</a>
+                            </div>
+
+                        </section>
+                    </div>
+                }
+
+            </div>
+
+
+
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="d-flex justify-content-end">
+                        <ul class="pagination pagination-sm pro-page-list">
+
+                            @if (TempData["catID"] != null)
+                            {
+                                <li>@Html.PagedListPager(Model.PagedProducts, page => Url.Action("ShoppingList", new { page, categoryID = TempData["catID"] }))</li>
+                            }
+                            else
+                            {
+                                <li>@Html.PagedListPager(Model.PagedProducts, page => Url.Action("ShoppingList", new { page }))</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</div>

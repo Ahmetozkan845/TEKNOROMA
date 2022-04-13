@@ -1,0 +1,60 @@
+﻿@model ProductVM
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel-body">
+    <div class="adv-table">
+        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ürün İsmi</th>
+                    <th>Ürün Fiyatı</th>
+                    <th>Ürün Stok</th>
+                    <th>Ürün Kategorisi</th>
+                    <th>Ürün Tedarikçisi</th>
+                    <th>Ürün Resmi</th>
+                    <th class="hidden-phone">Durum</th>
+                    <th class="hidden-phone">Sil</th>
+                    <th class="hidden-phone">Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Product item in Model.Products)
+                {
+                    <tr class="gradeX">
+                        <td>@item.ID</td>
+                        <td>@item.ProductName</td>
+                        <td>@item.UnitPrice</td>
+                        <td class="hidden-phone">@item.UnitsInStock</td>
+                        @if (item.Category == null)
+                        {
+                            <td>Kategori belirtilmemiş</td>
+                        }
+                        else
+                        {
+                            <td>@item.Category.CategoryName</td>
+                        }
+                        @if (item.Supplier == null)
+                        {
+                            <td>Tedarikçi belirtilmemiş</td>
+                        }
+                        else
+                        {
+                            <td>@item.Supplier.CompanyName</td>
+                        }
+
+                        <td><img width="30" height="30" title="@item.ProductName" src="@item.ImagePath" /></td>
+                        <td class="center hidden-phone">@item.Status</td>
+                        <td class="center hidden-phone">@Html.ActionLink(" ", "DeleteProduct", new { id = item.ID }, new { @class = "btn text-danger fas fa-times" })</td>
+                        <td class="center hidden-phone">@Html.ActionLink(" ", "UpdateProduct", new { id = item.ID }, new { @class = "btn text-warning fas fa-edit" })</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

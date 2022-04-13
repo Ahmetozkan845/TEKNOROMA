@@ -1,0 +1,395 @@
+﻿@{
+    AppUser admin = (AppUser)HttpContext.Current.Session["admin"];
+    AppUser manager = (AppUser)HttpContext.Current.Session["manager"];
+    AppUser sale = (AppUser)HttpContext.Current.Session["sale"];
+    AppUser ware = (AppUser)HttpContext.Current.Session["ware"];
+    AppUser accounter = (AppUser)HttpContext.Current.Session["accounter"];
+    AppUser tech = (AppUser)HttpContext.Current.Session["tech"];
+    AppUser mobileSale = (AppUser)HttpContext.Current.Session["mobileSale"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="@Url.Content("~/OuterTools/img/logo2.png")" />
+    <meta name="description" content="">
+    <meta name="author" content="antinho">
+    <meta name="keyword" content="Teknoroma, Admin, Panel, Yönetim, Employee">
+    <link rel="shortcut icon" href="~/OuterTools/img/logo2.jpg">
+
+    <title>TEKNOROMA YÖNETİM PANELİ</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/OuterTools/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/OuterTools/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <!--external css-->
+    <link href="~/OuterTools/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="~/OuterTools/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="~/OuterTools/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+
+
+    <link href="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/OuterTools/css/owl.carousel.css" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="~/OuterTools/css/style.css" rel="stylesheet">
+    <link href="~/OuterTools/css/index.css" rel="stylesheet">
+    <link href="~/OuterTools/css/style-responsive.css" rel="stylesheet" />
+    <script src="~/OuterTools/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="~/OuterTools/assets/advanced-datatable/media/js/jquery.js"></script>
+
+
+    <script src="~/OuterTools/js/jquery-1.8.3.min.js"></script>
+    <script src="~/OuterTools/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="~/OuterTools/assets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+
+</head>
+
+<body>
+
+    <section id="container">
+        <!--header start-->
+        <header class="header white-bg">
+            <div class="sidebar-toggle-box">
+                <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+            </div>
+            <!--logo start-->
+            <a href="" class="logo"> <img src="~/OuterTools/img/logo2.jpg" id="logo">Yönetim Paneli</a>
+            <!--logo end-->
+            <div class="top-nav">
+                <!--search & user info start-->
+                <ul class="nav pull-right top-menu">
+                    <!-- user login dropdown start-->
+
+                    <div class="dropdown-container">
+                        <a href="#">
+                            <img alt="" src="~/OuterTools/img/logo2.jpg" width="32" style="border-radius:50%;margin-right:5px">
+                            @if (Session["admin"] != null)
+                            {
+                                <span class="username"> @admin.UserName</span>
+                            }
+                            else if (Session["manager"] != null)
+                            {
+                                <span class="username"> @manager.UserName</span>
+                            }
+                            else if (Session["sale"] != null)
+                            {
+                                <span class="username"> @sale.UserName</span>
+                            }
+                            else if (Session["ware"] != null)
+                            {
+                                <span class="username"> @ware.UserName</span>
+                            }
+                            else if (Session["accounter"] != null)
+                            {
+                                <span class="username"> @accounter.UserName</span>
+                            }
+                            else if (Session["tech"] != null)
+                            {
+                                <span class="username"> @tech.UserName</span>
+                            }
+                            else if (Session["mobileSale"] != null)
+                            {
+                                <span class="username"> @mobileSale.UserName</span>
+                            }
+                            <i class="fas fa-chevron-down fa-sm text-info" style="margin-left:5px"></i>
+                        </a>
+
+                        <nav tabindex="1">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("LogOut","Login",new {Area="" })">Çıkış Yap <i class="fas fa-sign-out-alt"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+                    @if (Session["admin"] != null)
+                    {
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Kullanıcılar</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddAppUser", "AppUser")">Kullanıcı Ekle</a></li>
+                                <li><a href="@Url.Action("AppUserList", "AppUser")">Kullanıcıları Listele</a></li>
+                            </ul>
+                        </li>
+
+                    }
+
+                    else if (Session["manager"] != null)
+                    {
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-dolly"></i>
+                                <span>Siparişler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("OrderList", "Order")">Siparişleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-barcode"></i>
+                                <span>Sipariş Detayları</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("OrderDetailList", "OrderDetail")">Siparişleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-inbox"></i>
+                                <span>Mesajlar</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("MessageList", "Message")">Mesajları Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-user-astronaut"></i>
+                                <span>Çalışanlar</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddEmployee", "Employee")">Çalışan Ekle</a></li>
+                                <li><a href="@Url.Action("EmployeeList", "Employee")">Çalışanları Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-list-ul"></i>
+                                <span>Kategoriler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddCategory", "Category")">Kategori Ekle</a></li>
+                                <li><a href="@Url.Action("CategoryList", "Category")">Kategorileri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-laptop"></i>
+                                <span>Ürünler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddProduct", "Product")">Ürün Ekle</a></li>
+                                <li><a href="@Url.Action("ProductList", "Product")">Ürünleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-lira-sign"></i>
+                                <span>Giderler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddExpense", "Expense")">Gider Ekle</a></li>
+                                <li><a href="@Url.Action("ExpenseList", "Expense")">Giderleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-globe-europe"></i>
+                                <span>Bölgeler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddTerritory", "Territory")">Bölge Ekle</a></li>
+                                <li><a href="@Url.Action("TerritoryList", "Territory")">Bölgeleri Listele</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-id-badge"></i>
+                                <span>Çalışan Bölgeleri</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddEmployeeTerritory", "EmployeeTerritory")">Çalışan Bölgesi Ekle</a></li>
+                                <li><a href="@Url.Action("EmployeeTerritoryList", "EmployeeTerritory")">Çalışan Bölgelerini Listele</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    else if (Session["tech"] != null)
+                    {
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Teknik Arızalar</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddIssue", "Issue")">Arıza Ekle</a></li>
+                                <li><a href="@Url.Action("IssueList", "Issue")">Arızaları Listele</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    else if (Session["ware"] != null)
+                    {
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-laptop"></i>
+                                <span>Ürünler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddProduct", "Product")">Ürün Ekle</a></li>
+                                <li><a href="@Url.Action("ProductList", "Product")">Ürünleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-parachute-box"></i>
+                                <span>Tedarikçiler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddSupplier", "Supplier")">Tedarikçi Ekle</a></li>
+                                <li><a href="@Url.Action("SupplierList", "Supplier")">Tedarikçileri Listele</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    else if (Session["accounter"] != null)
+                    {
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-lira-sign"></i>
+                                <span>Giderler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddExpense", "Expense")">Gider Ekle</a></li>
+                                <li><a href="@Url.Action("ExpenseList", "Expense")">Giderleri Listele</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    else if (Session["sale"] != null)
+                    {
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="icon-laptop"></i>
+                                <span>Ürünler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("AddProduct", "Product")">Ürün Ekle</a></li>
+                                <li><a href="@Url.Action("ProductList", "Product")">Ürünleri Listele</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-dolly"></i>
+                                <span>Siparişler</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="@Url.Action("OrderList", "Order")">Siparişleri Listele</a></li>
+                            </ul>
+                        </li>
+                    }
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                @RenderBody()
+
+            </section>
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                2022 &copy; Teknoroma Inc. Tüm hakları saklıdır.
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+
+    <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/OuterTools/js/jquery.scrollTo.min.js"></script>
+    <script src="~/OuterTools/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/OuterTools/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="~/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/OuterTools/js/owl.carousel.js"></script>
+    <script src="~/OuterTools/js/jquery.customSelect.min.js"></script>
+    <script src="~/OuterTools/js/respond.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script class="include" type="text/javascript" src="~/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+
+    <!--common script for all pages-->
+    <script src="~/OuterTools/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+    <script src="~/OuterTools/js/sparkline-chart.js"></script>
+    <script src="~/OuterTools/js/easy-pie-chart.js"></script>
+    <script src="~/OuterTools/js/count.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+    <script>
+
+        //owl carousel
+
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+        //Tarih seçici
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        })
+
+
+    </script>
+
+</body>
+</html>

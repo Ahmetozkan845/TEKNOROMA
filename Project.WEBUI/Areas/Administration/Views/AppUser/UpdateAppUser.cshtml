@@ -1,0 +1,80 @@
+﻿@model AppUserVM
+@{
+    ViewBag.Title = "UpdateAppUser";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.AppUser.ID)
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Kullanıcı Ekleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Kullanıcı Adı
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.AppUser.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.AppUser.UserName)
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Parola
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.PasswordFor(x => x.AppUser.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.AppUser.Password)
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Parola Onay
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.PasswordFor(x => x.AppUser.ConfirmPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.AppUser.ConfirmPassword)
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Email
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.AppUser.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.AppUser.Email)
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Rol Seçiniz
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.EnumDropDownListFor(x => x.AppUser.Role, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-warning">Kullanıcı Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

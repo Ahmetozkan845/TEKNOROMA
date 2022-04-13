@@ -1,0 +1,86 @@
+﻿@model SupplierVM
+@{
+    ViewBag.Title = "UpdateSupplier";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.Supplier.ID)
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Tedarikçi Güncelleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Tedarikçi Şirket
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.CompanyName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Yetkili İsmi
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.ContactName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Telefon No
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.PhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Ülke
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.Country, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Şehir
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.City, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Adres
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Supplier.Address, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-warning">Tedarikçi Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

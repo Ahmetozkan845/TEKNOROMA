@@ -1,0 +1,45 @@
+﻿@model EmployeeTerritoryVM
+@{
+    ViewBag.Title = "AddEmployeeTerritory";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Çalışan Bölgesi Ekleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Bölge
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.EmployeeTerritory.TerritoryID, new SelectList(Model.Territories, "ID", "TerritoryDescription"), "Lütfen bölge seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Çalışan
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.EmployeeTerritory.EmployeeID, new SelectList(Model.Employees, "ID", "LastName"), "Lütfen çalışan seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-primary">Çalışan Bölgesi Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

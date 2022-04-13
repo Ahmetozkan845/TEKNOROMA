@@ -1,0 +1,63 @@
+﻿@model OrderVM
+@{
+    ViewBag.Title = "Siparişi Onayla";
+}
+
+<div class="container">
+    <div class="order-body">
+        @using (Html.BeginForm("ConfirmOrder","Shopping",FormMethod.Post, new {@class="form-signin" }))
+        {
+        <div>
+            <div class="form-title">
+                <h1 class="form-title-text text-center">Siparişinizi Tamamlayın</h1>
+            </div>
+            <div class="form-group">
+                <label class="title">Ülke</label>
+                @Html.TextBoxFor(x => x.Order.ShipCountry, new { @class = "form-control", placeholder = "Ülkenizi giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Şehir</label>
+                @Html.TextBoxFor(x => x.Order.ShipCity, new { @class = "form-control", placeholder = "Şehrinizi giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Adres</label>
+                @Html.TextAreaFor(x => x.Order.ShipAddress, new { @class = "form-control", placeholder = "Adresinizi giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Email</label>
+                @Html.TextBoxFor(x => x.Order.Email, new { @class = "form-control", placeholder = "Emailinizi giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Kart Numarası</label>
+                @Html.TextBoxFor(x => x.PaymentDTO.CardNumber, new { @class = "form-control", placeholder = "Kart numaranızı giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Kartın Üzerindeki İsim</label>
+                @Html.TextBoxFor(x => x.PaymentDTO.CardUserName, new { @class = "form-control", placeholder = "Kartın üzerindeki ismi giriniz" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Son Kullanma Tarihi (Ay)</label>
+                @Html.TextBoxFor(x => x.PaymentDTO.CardExpiryMonth, new { @class = "form-control", placeholder = "Son kullanma tarihini giriniz (Ay)" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Son Kullanma Tarihi (Yıl)</label>
+                @Html.TextBoxFor(x => x.PaymentDTO.CardExpiryYear, new { @class = "form-control", placeholder = "Son kullanma tarihini giriniz (Yıl)" })
+            </div>
+
+            <div class="form-group">
+                <label class="title">Kart Güvenlik Numarası</label>
+                @Html.TextBoxFor(x => x.PaymentDTO.SecurityNumber, new { @class = "form-control", placeholder = "3 haneli güvenlik numarasını giriniz (CVC)" })
+            </div>
+
+            <button class="bt-register bt-md btn-block mt-3">Satın Al</button>
+        </div>
+        }
+    </div>
+</div>

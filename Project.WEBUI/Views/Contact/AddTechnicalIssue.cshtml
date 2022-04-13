@@ -1,0 +1,39 @@
+﻿@model IssueVM
+@{
+    ViewBag.Title = "Teknik Destek Bildir";
+}
+
+<div class="login-body">
+
+    <div class="container">
+
+
+
+        @using (Html.BeginForm())
+        {
+
+
+        <div class="message-form">
+            <div class="login-wrap">
+                <div class="form-title">
+                    <h1 class="form-title-text text-center">Teknik Sorun Bildir</h1>
+                </div>
+                <label for="text" class="title">Konu Başlığı</label>
+                @Html.TextBoxFor(x => x.Issue.Subject, new { @class = "form-control", placeholder = "Yardım almak istediğiniz konuyu giriniz", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.Issue.Subject)
+                <label for="text" class="title">Açıklama</label>
+                @Html.TextBoxFor(x => x.Issue.Answer, new { @class = "form-control", placeholder = "Lütfen sorununuzla ilgili açıklamanızı giriniz", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.Issue.Answer)
+                <label for="text" class="title">Email</label>
+                @Html.TextBoxFor(x => x.Issue.Email, new { @class = "form-control", placeholder = "Lütfen emailinizi giriniz", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.Issue.Email)
+
+                <button class="bt-login bt-md btn-block mt-3">Sorun Bildir</button>
+
+            </div>
+        </div>
+        }
+
+
+    </div>
+</div>

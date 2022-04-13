@@ -1,0 +1,39 @@
+﻿@model MessageVM
+@{
+    ViewBag.Title = "MessageList";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel-body">
+    <div class="adv-table">
+        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Sorun</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Talep Tipi</th>
+                    <th>Talep Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Message item in Model.Messages)
+                {
+                    <tr class="gradeX">
+                        <td>@item.ID</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Description</td>
+                        <td>@item.Email</td>
+                        <th>@item.MessageType</th>
+                        <td>@item.MessageDate</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="~/Areas/Administration/AdminContent/MessageDTJ.js"></script>

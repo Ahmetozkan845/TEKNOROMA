@@ -1,0 +1,66 @@
+﻿@model IssueVM
+@{
+    ViewBag.Title = "UpdateIssue";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.Issue.ID)
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Teknik Arıza Güncelleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Başlık
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Issue.Subject, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Arıza Notu
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Issue.Answer, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Kullanıcı
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.Issue.AppUserID, new SelectList(Model.AppUsers, "ID", "UserName"), "Lütfen kullanıcı seçiniz", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Arıza Durumu
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.EnumDropDownListFor(x => x.Issue.IssueStatus, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-warning">Teknik Arıza Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}

@@ -1,2 +1,0 @@
-# TEKNOROMA
- BilgeAdam Teknoroma Project

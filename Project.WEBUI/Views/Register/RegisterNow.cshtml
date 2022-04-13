@@ -1,0 +1,58 @@
+﻿@model AppUserVM
+@{
+    ViewBag.Title = "Kayıt Ol";
+}
+
+
+<div class="login-body">
+
+    <div class="container">
+
+
+        @using (Html.BeginForm("RegisterNow", "Register", FormMethod.Post, new { @class = "form-signin" }))
+        {
+
+            <h6 class="text-center text-danger">@ViewBag.KullaniciVar</h6>
+            <h6 class="text-center text-danger">@TempData["guest"]</h6>
+
+            <div class="login-wrap">
+
+
+                <div class="form-title">
+
+
+                    <h1 class="form-title-text text-center">Hemen Kayıt Ol</h1>
+                </div>
+                <label for="name" class="title">İsim</label>
+                @Html.TextBoxFor(x => x.Profile.FirstName, new { @class = "form-control", placeholder = "İsminizi giriniz" })
+                <label for="surname" class="title">Soyisim</label>
+                @Html.TextBoxFor(x => x.Profile.LastName, new { @class = "form-control", placeholder = "Soyisminizi giriniz" })
+                <label for="username" class="title">Kullanıcı Adı</label>
+                @Html.TextBoxFor(x => x.AppUser.UserName, new { @class = "form-control", placeholder = "Kullanıcı adınızı giriniz", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.AppUser.UserName)
+                <label for="password" class="title">Parola</label>
+                @Html.PasswordFor(x => x.AppUser.Password, new { @class = "form-control", placeholder = "Parolanızı giriniz", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.AppUser.Password)
+                <label for="password" class="title">Parola Onay</label>
+                @Html.PasswordFor(x => x.AppUser.ConfirmPassword, new { @class = "form-control", placeholder = "Parolanızı onaylayınız", autocomplete = "off" })
+                @Html.ValidationMessageFor(x => x.AppUser.ConfirmPassword)               
+                <label for="email" class="title">Email</label>
+                @Html.TextBoxFor(x => x.AppUser.Email, new { @class = "form-control", placeholder = "Email adresinizi giriniz" })
+                @Html.ValidationMessageFor(x => x.AppUser.Email)
+                <label for="tcno" class="title">T.C. Kimlik No</label>
+                @Html.TextBoxFor(x => x.Profile.TCNO, new { @class = "form-control", placeholder = "T.C. kimlik numaranızı giriniz" })
+                <label for="gender" class="title">Cinsiyet</label>
+                @Html.EnumDropDownListFor(x => x.Profile.Gender, "Cinsiyetinizi Seçiniz", new { @class = "form-control" })
+                <button class="bt-register bt-md btn-block mt-3">Kayıt Ol</button>
+                <div class="text-center">
+                    <h4 class="registration">
+                        @Html.ActionLink("Zaten üye misiniz? Giriş yapmak için tıklayınız.", "Login", "Login")
+                    </h4>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model ExpenseVM
+@{
+    ViewBag.Title = "ExpenseList";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel-body">
+    <div class="adv-table">
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Euro Alış</th>
+                    <th>Euro Satış</th>
+                    <th>Dolar Alış</th>
+                    <th>Dolar Satış</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@ViewBag.EuroBuy</td>
+                    <td>@ViewBag.EuroSell</td>
+                    <td>@ViewBag.DolarBuy</td>
+                    <td>@ViewBag.DolarSell</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Açıklama</th>
+                    <th>Gider Miktarı</th>
+                    <th>Gider Türü</th>
+                    <th>Tarih</th>
+                    <th class="hidden-phone">Durum</th>
+                    <th class="hidden-phone">Sil</th>
+                    <th class="hidden-phone">Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Expense item in Model.Expenses)
+                {
+                    <tr class="gradeX">
+                        <td>@item.ID</td>
+                        <td>@item.Description</td>
+                        <td>@item.Amount</td>
+                        <td>@item.ExpenseType</td>
+                        <td>@item.PaymentDate</td>
+                        <td class="center hidden-phone">@item.Status</td>
+                        <td class="center hidden-phone">@Html.ActionLink(" ", "DeleteExpense", new { id = item.ID }, new { @class = "btn text-danger fas fa-times" })</td>
+                        <td class="center hidden-phone">@Html.ActionLink(" ", "UpdateExpense", new { id = item.ID }, new { @class = "btn text-warning fas fa-edit" })</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="~/Areas/Administration/AdminContent/ExpenseDTJ.js"></script>

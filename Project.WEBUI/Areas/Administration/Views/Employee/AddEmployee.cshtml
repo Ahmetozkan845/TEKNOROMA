@@ -1,0 +1,106 @@
+﻿@model EmployeeVM
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row container">
+        <div class="col-sm-10">
+            <section class="panel">
+                <header class="panel-heading">
+                    Çalışan Ekleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            İsim
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Soyisim
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            TC
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.TCNO, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Telefon
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.PhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Email
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Cinsiyet
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.EnumDropDownListFor(x => x.Employee.Gender, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Rol
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.EnumDropDownListFor(x => x.Employee.Role, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Maaş
+                        </label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Employee.Salary, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button class="btn btn-primary">Çalışan Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
