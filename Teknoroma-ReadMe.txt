@@ -7,6 +7,7 @@
 =>Projede "Image Uploader", "Mail Service" ve "Cyrptography" yapıları bulunmaktadır.
 =>Döviz kurları işlemleri XML yapısı ile Türkiye Cumhuriyeti Merkez Bankasından "(http://www.tcmb.gov.tr/kurlar/today.xml)" alınmaktadır.
 =>Siparişin onaylanması için kullanıcının belirleyeceği veya anlaşmalı olacağı sanal pos entegrasyonu yapılmalıdır. Pos ile ilgili temel alt yapılar projede tanımlanmıştır.
+=>Proje Mail Servisinin çalışabilmesi için proje ile birlikte https://github.com/Ahmetozkan845/MailSender-with-TeknoromaProject Repository çalıştırılmalıdır.
 =>TEKNOROMA Mail Servisi tarafınıza ulaşılabilmesi için güvenlik ayarı optimizasyonlarının yapılması gerekmektedir.
 
 TEKNOROMA GÖRÜNÜM
